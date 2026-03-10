@@ -69,7 +69,7 @@ document.getElementById("studentForm").addEventListener("submit", function(event
         return;
     }
     if(rollNum.has(roll)) return alert("Roll number must be unique");
-    if (isNaN(roll) && roll<0) {
+    if (isNaN(roll) || roll <= 0) {
         alert("Roll number must be a number and greater than 0");
         return;
     }
