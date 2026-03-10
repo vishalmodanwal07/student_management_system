@@ -156,7 +156,12 @@ function updateStudent(index) {
     if (name === null) return;
     
     const roll = prompt("Enter new roll number:", student.roll);
-    if (roll === null) return;
+    if (roll === null && isNaN(roll)) return alert("Roll number must be a number");
+    if(rollNum.has(parseInt(roll)) && parseInt(roll) !== student.roll) {
+        alert("roll number is already present.Roll number must be unique");
+        return;
+    }
+    
     
     const marks = prompt("Enter new marks:", student.marks);
     if (marks === null) return;
@@ -179,6 +184,7 @@ function updateStudent(index) {
     student.roll = parseInt(roll);
     student.marks = marksNum;
     student.course = course;
+    rollNum.add(parseInt(roll));
     
     if (marksNum >= 40 && marksNum <= 100) {
         student.status = "Pass";
