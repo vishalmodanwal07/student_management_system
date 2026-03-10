@@ -8,6 +8,7 @@ function loadStudentsFromStorage() {
         const data = JSON.parse(stored);
         data.forEach(student => {
             students.push(new Student(student.name, student.roll, student.marks, student.course));
+            rollNum.add(student.roll);
         });
     }
 }
@@ -41,7 +42,7 @@ class Student {
 function showTotalStudents(students) {
     return students.length;
 }
-console.log(showTotalStudents(students));
+// console.log(showTotalStudents(students));
 
 function deleteStudent(roll) {
     const index = students.findIndex(student => student.roll === roll);
@@ -53,8 +54,8 @@ function deleteStudent(roll) {
     }
 }
 
-console.log(deleteStudent(2));
-console.log(students);
+// console.log(deleteStudent(2));
+// console.log(students);
 
 
 document.getElementById("studentForm").addEventListener("submit", function(event) {
@@ -83,7 +84,6 @@ document.getElementById("studentForm").addEventListener("submit", function(event
     rollNum.add(roll);
     localStorage.setItem("students", JSON.stringify(students));
     displayStudents();
-    // Clear form
     document.getElementById("studentForm").reset();
 });
 let showTotalBtn = document.getElementById("showTotal");
@@ -190,7 +190,7 @@ function updateStudent(index) {
     displayStudents();
 }
 
-// Load from storage and display
+
 loadStudentsFromStorage();
 displayStudents();
 
